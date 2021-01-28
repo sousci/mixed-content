@@ -10,6 +10,19 @@
 <main>
   <h1>Mixed content test</h1>
   <img src="http://sample.bizvektor.com/wp-content/themes/biz-vektor/images/headers/accelerate.jpg">
+  
+  
+  <php?
+      $url = "https://plen.jp/wp/wp-content/uploads/2017/12/pp_logo.png";
+    $img = file_get_contents($url);
+
+    $enc_img = base64_encode($img);
+
+    $imginfo = getimagesize('data:application/octet-stream;base64,' . $enc_img);
+
+    echo '<img src="data:' . $imginfo['mime'] . ';base64,'.$enc_img.'">';
+  ?>
+  
 </main>
 
 
